@@ -105,38 +105,6 @@ body {
   opacity: 0.6;
 }
 
-.app:has(.app-menu-item.active[data-role="pin"]):not(.inactivated) {
-  order: -1;
-}
-
-.app.inactivated {
-  order: 1000 !important;
-}
-
-.app.inactivated .app-title {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
-  margin-left: 8px;
-}
-
-.app.inactivated .app-title::after {
-  content: "暂不可用";
-  margin-left: 5px;
-  font-weight: 400;
-}
-
-.app.inactivated .app-menu {
-  display: none;
-}
-
-.app.inactivated .app-content > img {
-  display: none;
-}
-
-.app.inactivated .app-title-icon {
-  display: none;
-}
-
 .app-content {
   display: flex;
   flex-direction: row;

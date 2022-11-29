@@ -1,0 +1,32 @@
+{
+  "name": "health-code-simulator",
+  "version": "0.0.1",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "node build.mjs --dev --watch --serve",
+    "dev:https": "node build.mjs --dev --watch --serve-https",
+    "build": "node build.mjs",
+    "build:serve": "node build.mjs --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://codeberg.org/ilovexjp/health-code-simulator.git"
+  },
+  "homepage": "https://codeberg.org/ilovexjp/health-code-simulator",
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "clean-css": "^5.3.1",
+    "globby": "^13.1.2",
+    "html-minifier": "^4.0.0",
+    "http-server": "^14.1.1",
+    "micromatch": "^4.0.5",
+    "sass": "^1.56.1",
+    "uglify-js": "^3.17.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

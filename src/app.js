@@ -15,9 +15,9 @@ const apps = {
     help_text:
       "<p>点击姓名、城市、场所地址等可以修改对应<p>点击二维码可以切换 “粤康码” 及 “粤康码场所通行” 页面。</p>",
     menu: [
-      { title: "场所", icon: "place", link: "ykm/checkin.html" },
-      { title: "核酸", icon: "vaccines", link: "ykm/detail.html" },
-      { title: "广州", icon: "map", link: "gwongzau-hc/checkin.html" },
+      { title: "场所", icon: "@place", link: "ykm/checkin.html" },
+      { title: "核酸", icon: "@vaccines", link: "ykm/detail.html" },
+      { title: "广州", icon: "@map", link: "gwongzau-hc/checkin.html" },
     ],
   },
   "skm": {
@@ -28,8 +28,8 @@ const apps = {
     help_text:
       "<p>点击姓名、证件号、场所地址等可以修改对应信息；</p><p>点击二维码可以展示签到页面。</p>",
     menu: [
-      { title: "场所", icon: "place", link: "skm/index.html#checkin" },
-      { title: "核酸", icon: "vaccines", link: "skm/detail.html" },
+      { title: "场所", icon: "@place", link: "skm/index.html#checkin" },
+      { title: "核酸", icon: "@vaccines", link: "skm/detail.html" },
     ],
   },
   "jkb": {
@@ -40,8 +40,8 @@ const apps = {
     help_text:
       "<p>点击姓名、证件号可以修改对应信息；</p><p>点击照片可以更改或移除照片，超过 4MB 的图片可能无法在本地保存；</p><p>点击右上角二维码标志可以在 “本人健康码自查询” 和 “本人信息扫码登记” 间切换；</p><p>点击 “未见异常” 可以切换 “通勤” 标志。</p>",
     menu: [
-      { title: "扫描", icon: "qr_code_scanner", link: "jkb/scan.html" },
-      { title: "场所", icon: "place", link: "jkb/checkin.html" },
+      { title: "扫描", icon: "@qr_code_scanner", link: "jkb/scan.html" },
+      { title: "场所", icon: "@place", link: "jkb/checkin.html" },
     ],
   },
   "tfjkt": {
@@ -51,9 +51,66 @@ const apps = {
     color: "#0ba099",
     help_text:
       "<p>点击姓名、证件号、场所地址等可以修改对应信息；</p><p>点击“扫场所码”展示场所码。</p>",
-    menu: [{ title: "场所", icon: "place", link: "tfjkt/checkin.html" }],
+    menu: [{ title: "场所", icon: "@place", link: "tfjkt/checkin.html" }],
   },
   "ssm": {
+    html: `
+    <div class="app" data-link="ssm/index.html" data-role="app" data-app-name="ssm"
+        style="padding: 0 0 8px 0; margin: 18px 0 60px 0; border-radius: 8px; background-color: #eee; position: relative;">
+      <div style="justify-content: space-between; padding: 6px 10px; color: white; background-color: blue;
+                  border-radius: 8px 8px 0 0; display: flex; align-items: center;">
+        <span style="width: 20px; text-align: center;">北</span>
+        <span style="font-weight: 500; font-size: 22px;">乌鲁木齐中路</span>
+        <span style="width: 20px; text-align: center;">南</span>
+      </div>
+      <div style="justify-content: space-between; padding: 2px 10px; color: #777; background-color: white;
+                  border-radius: 0 0 8px 8px; display: flex; align-items: center;">
+        <span style="width: 20px; text-align: center;">N</span>
+        <span style="font-weight: 500; font-size: 16px;">Wulumuqi Rd.(M)</span>
+        <span style="width: 20px; text-align: center;">S</span>
+      </div>
+      <div class="app-content" style="justify-content: center;">
+        <div class="app-description">
+          <div class="app-menu" style="width: 100%;justify-content: center;">
+            <style>
+              .app[data-app-name="ssm"] .app-menu-item:not(.active) { background: white; }
+            </style>
+            <div class="app-menu-item" data-role="link" data-link="ssm">
+              <img class="app-menu-app-icon" src="ssm/static/ssbapp-logo.png"
+                  style="border-radius: 20px; margin-right: 2px;">
+              <span class="app-menu-app-title">随申码</span>
+            </div>
+            <div class="app-menu-item" data-role="link" data-link="ssm/scan.html">
+              <img class="app-menu-app-icon" src="common/icons/qr_code_scanner.svg">
+              <span class="app-menu-app-title">扫描</span>
+            </div>
+            <div class="app-menu-item" data-role="link" data-link="ssm/checkin.html">
+              <img class="app-menu-app-icon" src="common/icons/place.svg">
+              <span class="app-menu-app-title">场所</span>
+            </div>
+            <div class="app-menu-item ${localStorage.getItem("pinned") 
+                  && localStorage.getItem("pinned").split(",").indexOf("ssm") >= 0 
+                  && "active" || ""}" data-role="pin">
+              <img class="app-menu-app-icon" src="common/icons/push_pin.svg">
+            </div>
+            <div class="app-menu-item" data-role="help" style="margin-right: 0;">
+              <img class="app-menu-app-icon" src="common/icons/info.svg">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="border-width: 0 3px 0 3px; border-color: #555; border-style: solid; background-color: #eee;
+                    width: 24px; height: 60px; align-self: center; position: absolute; top: 117.5px;"></div>
+      <div class="app-help" style="position: fixed; bottom: 0; left: 0; margin: 30px 12px;
+          background-color: #fff; border: 2px solid #000; z-index: 20;"
+          onclick="this.style.display = 'none'; 
+              this.closest('.app').querySelector('.app-menu-item[data-role=help]').classList.remove('active');">
+        <div class="app-help-subtitle">随申码使用说明</div>
+        <p>点击姓名、证件号、场所地址等可以修改对应信息；</p>
+        <p>点击照片可以更改或移除照片，超过 4MB 的图片可能无法在本地保存；</p>
+        <p>点击二维码展示场所码。</p>
+      </div>
+    </div>`,
     title: "随申码",
     icon: "ssm/static/ssbapp-logo.png",
     link: "ssm/index.html",
@@ -61,8 +118,9 @@ const apps = {
     help_text:
       "<p>点击姓名、证件号、场所地址等可以修改对应信息；</p><p>点击照片可以更改或移除照片，超过 4MB 的图片可能无法在本地保存；</p><p>点击二维码展示场所码。</p>",
     menu: [
-      { title: "扫描", icon: "qr_code_scanner", link: "ssm/scan.html" },
-      { title: "场所", icon: "place", link: "ssm/checkin.html" },
+      // { title: "随申码", icon: "ssm/static/ssbapp-logo.png", link: "ssm" },
+      { title: "扫描", icon: "@qr_code_scanner", link: "ssm/scan.html" },
+      { title: "场所", icon: "@place", link: "ssm/checkin.html" },
     ],
   },
   "shandong-hc": {
@@ -75,10 +133,10 @@ const apps = {
     menu: [
       {
         title: "场所",
-        icon: "place",
+        icon: "@place",
         link: "shandong-hc/index.html#checkin",
       },
-      { title: "威海", icon: "map", link: "weihai-hc/index.html" },
+      { title: "威海", icon: "@map", link: "weihai-hc/index.html" },
     ],
     contributors: [
       {
@@ -109,7 +167,7 @@ const apps = {
     icon: "hunan-hc/static/logo-b18dcf7bf55c412ec04989061d0512ad.png",
     link: "hunan-hc/index.html",
     help_text: "<p>点击姓名、证件号、采样点、场所地址等可以修改对应信息。</p><p>点击“二维码”可以切换“健康卡”与“场所码”</p>",
-    menu: [{ title: "场所", icon: "place", link: "hunan-hc/checkin.html"}],
+    menu: [{ title: "场所", icon: "@place", link: "hunan-hc/checkin.html"}],
     contributors: [
       { name: "uodedcli", description: "参与制作", style: "namestrip" },
     ],
@@ -121,7 +179,7 @@ const apps = {
     color: "#3a5eff",
     help_text:
       "<p>点击姓名、证件号可以修改对应信息；</p><p>点击 “扫一扫” 进入场所张贴码。</p>",
-    menu: [{ title: "场所", icon: "place", link: "fujian-hc/checkin.html" }],
+    menu: [{ title: "场所", icon: "@place", link: "fujian-hc/checkin.html" }],
   },
   "zhejiang-hc": {
     title: "浙江健康码",
@@ -137,7 +195,7 @@ const apps = {
     color: "#e84336",
     help_text:
       "<p>点击城市名、姓名、证件号可以修改对应信息；</p><p>点击二维码可以切换至“疫情防控场所码”。</p>",
-    menu: [{ title: "场所", icon: "place", link: "henan-hc/checkin.html" }],
+    menu: [{ title: "场所", icon: "@place", link: "henan-hc/checkin.html" }],
   },
   "tianjin-hc": {
     title: "天津数字防疫",
@@ -153,7 +211,10 @@ const apps = {
     color: "#0bae81",
     help_text:
       "<p>点击地点名称、姓名、证件号可以修改对应信息；</p><p>点击核酸检测时间可以切换小时数；</p><p>点击“已采样”可以切换今日是否采样。</p>",
-    menu: [{ title: "场所", icon: "place", link: "shaanxi-hc/checkin.html" }],
+    menu: [
+      { title: "场所", icon: "@place", link: "shaanxi-hc/checkin.html" },
+      { title: "核酸", icon: "@vaccines", link: "shaanxi-hc/nucResult.html" },
+    ],
   },
   "chongqing-hc": {
     title: "渝康码",
@@ -162,8 +223,8 @@ const apps = {
     color: "#f5aa06",
     help_text: "<p>点击地点名称、姓名、证件号可以修改对应信息；</p><p>点击二维码可以切换至重庆市“场所码”。</p>",
     menu: [
-      { title: "场所", icon: "place", link: "chongqing-hc/checkin.html" },
-      { title: "核酸", icon: "vaccines", link: "chongqing-hc/detail.html" },
+      { title: "场所", icon: "@place", link: "chongqing-hc/checkin.html" },
+      { title: "核酸", icon: "@vaccines", link: "chongqing-hc/detail.html" },
     ]
   },
   "hebei-hc": {
@@ -175,19 +236,20 @@ const apps = {
   },
 };
 
-function onIconFail(t) {
-  t.closest(".app").classList.add("inactivated");
-}
-
 function render() {
   let html = "";
   for (const [name, app] of Object.entries(apps)) {
+    if (app.html) { html += app.html; continue; }
     let menu_html = "";
     if (app.menu) {
       for (const menu_item of app.menu) {
+        let icon = menu_item.icon || "@qr_code";
+        if (icon.startsWith("@")) {
+          icon = `common/icons/${icon.slice(1)}.svg`;
+        }
         menu_html += `
           <div class="app-menu-item" data-role="link" data-link="${menu_item.link || ""}">
-            <img class="app-menu-app-icon" src="common/icons/${menu_item.icon || "qr_code"}.svg"></img>
+            <img class="app-menu-app-icon" src="${icon}"></img>
             <span class="app-menu-app-title">${menu_item.title}</span>
           </div>
         `;
@@ -231,7 +293,7 @@ function render() {
     html += `
     <div class="app" data-link="${app.link || ""}" data-role="app" data-app-name="${name}">
       <div class="app-content">
-        <img src="${app.icon}" onerror="onIconFail(this);" style="border-color: ${app.color || "#aaa"};">
+        ${app.icon && `<img src="${app.icon}" style="border-color: ${app.color || "#aaa"};">` || ""}
         <div class="app-description">
           <div class="app-title-wrapper">
             <span class="app-title">${app.title}</span>
@@ -257,7 +319,7 @@ function render() {
   document.querySelector(".apps-list").innerHTML = html;
   
   const elements = [
-    ...document.querySelectorAll(".app:not(.inactivated)"),
+    ...document.querySelectorAll(".app"),
     ...document.getElementsByClassName("app-menu-item")
   ];
   if (elements.length) {
@@ -268,7 +330,6 @@ function render() {
       if (data_link) {
         element.addEventListener("click", (e) => {
           e.stopPropagation();
-          if (element.classList.contains("inactivated")) return;
           // try {
           //   navigator.serviceWorker.controller.postMessage({
           //     type: "download",
@@ -324,12 +385,12 @@ function render() {
   
   const pinned_list = localStorage.getItem("pinned") ? localStorage.getItem("pinned").split(",") : [];
   if (pinned_list) {
-    for (const element of document.querySelectorAll(".app:not(.inactivated)") || []) {
+    for (const element of document.querySelectorAll(".app") || []) {
       if (pinned_list.includes(element.attributes["data-app-name"].value)) {
         element.style.order = -1;
       }
       element.addEventListener("touchstart", (e) => {
-        if (!(e.target.classList && e.target.classList[0].startsWith("app-menu-item")))
+        if (!(e.target.classList[0] && e.target.classList[0].startsWith("app-menu-item")))
           element.classList.add("selected");
       });
       element.addEventListener("touchmove", () => {
@@ -452,7 +513,7 @@ function render() {
     document.querySelector(".sw-status").innerHTML = `
       <div class="icon-align" onclick="toggleDisplay('#pwa-install-help');">
         <img class="icon" src="common/icons/add_box.svg">
-        <span>添加至主屏幕</span>
+        <span>全屏显示</span>
       </div>`;
   } else {
     document.querySelector(".sw-status").innerHTML = `

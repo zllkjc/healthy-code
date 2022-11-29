@@ -1,27 +1,24 @@
 # health-code-simulator
 
-常见问题：[FAQ.md](https://codeberg.org/ilovexjp/health-code-simulator/src/branch/main/docs/FAQ.md)
+## Installation
 
-Telegram 频道：[@gh_ilovexjp](https://t.me/gh_ilovexjp)
+```shell
+npm install
+```
 
-网页演示：[Cloudflare](https://ilovexjp.pages.dev)
+## Development
 
-Reddit: [r/ILoveHealthCode](https://reddit.com/r/ILoveHealthCode)
+```shell
+npm run dev
+
+# develop with https server
+npm run dev:https
+```
 
 ## Build
 
 ### Build for production
 
 ```shell
-npm i -g uglify-js clean-css-cli html-minifier sass
-make build
-```
-
-### Launch local server
-
-Requires python3.
-
-```shell
-npm i -g sass
-make serve
+npm run build
 ```
