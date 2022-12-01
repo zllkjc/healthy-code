@@ -53,7 +53,7 @@
             <view class="h5-div rax-view-v2 NameCard--card--vuewl_Z">
               <view class="h5-div rax-view-v2 NameCard--nameWrap--NOA5szM">
                 <view class=" h5-div rax-view-v2 NameCard--left--YTgr_BY">
-                  <view class="h5-div rax-view-v2 NameCard--name--tNI4G8C" id="name">习近平</view>
+                  <view class="h5-div rax-view-v2 NameCard--name--tNI4G8C" id="name">钟国强</view>
                 </view>
                 <view class="h5-div rax-view-v2 NameCard--userCenter--karrlxe">个人中心</view>
               </view>
@@ -200,7 +200,7 @@
   setStaticTime("#covid-test-time", 11, 16, traceback_hours);
   document.getElementById("covid-test-date").innerText = (d.getMonth() + 1) + "月" + d.getDate() + "日";
 
-  addStorageField("_zj_city", "#city", "城市", "宁波", (x) => "当前地区：" + x, (x) => {
+  addStorageField("_zj_city", "#city", "城市", "杭州", (x) => "当前地区：" + x, (x) => {
     x = x.trim();
     if (x in hotline_map) {
       document.getElementById("hotline").innerText = "服务热线：" + hotline_map[x];
@@ -209,7 +209,7 @@
     }
   });
 
-  addStorageField("_name", "#name", "名字", "习近平");
+  addStorageField("_name", "#name", "名字", "钟国强");
   addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", (x) =>
     x.slice(0, 4) + " " + x.slice(4, 8) + " " +
     x.slice(8, 12) + " " + x.slice(12, 16) + " " + x.slice(16)
